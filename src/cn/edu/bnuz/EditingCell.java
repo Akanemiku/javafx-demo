@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 
 /**
  * 表格单元格修改类
+ * 单元格都可修改，但暂时未能保存到文件中，为后续优化功能
  */
 public class EditingCell extends TableCell<Person, String> {
 

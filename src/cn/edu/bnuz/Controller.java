@@ -23,6 +23,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 控制层
+ */
 public class Controller {
     @FXML
     private TableView<Person> tableView;
@@ -87,6 +90,7 @@ public class Controller {
 
     /**
      * list转byte[]数组，用于存入文件中
+     *
      * @param personList
      * @return
      */
@@ -100,6 +104,7 @@ public class Controller {
 
     /**
      * 新增
+     *
      * @param event
      * @throws IOException
      */
@@ -135,6 +140,7 @@ public class Controller {
 
     /**
      * 删除
+     *
      * @param event
      * @throws IOException
      */
@@ -167,6 +173,7 @@ public class Controller {
 
     /**
      * 修改
+     *
      * @param event
      * @throws IOException
      */
@@ -194,11 +201,11 @@ public class Controller {
                 }
             }
             //如果有更新，则添加全部数据回表格
-            if(flag){
+            if (flag) {
                 data.addAll(personList);
             }
 
-            Files.write(path,listToBytes(personList));
+            Files.write(path, listToBytes(personList));
 
             idModify.clear();
             nameModify.clear();
@@ -209,6 +216,7 @@ public class Controller {
 
     /**
      * 查找，仅支持通过id或name查找
+     *
      * @param event
      * @throws CloneNotSupportedException
      */
@@ -260,6 +268,7 @@ public class Controller {
             data.add(personList.get(personList.size() - 1));
         }
 
+        //初始化多选框，默认全为false，当为true则被选中
         selectedColumn.setCellFactory(
                 CellFactory.tableCheckBoxColumn(new Callback<Integer, ObservableValue<Boolean>>() {
                     @Override
@@ -279,6 +288,10 @@ public class Controller {
                     }
                 }));
 
+        /**
+         * 单元格都可修改，但暂时未能保存到文件中，为后续优化功能
+         */
+        //每个单元格都可编辑
         Callback<TableColumn<Person, String>,
                 TableCell<Person, String>> cellFactory
                 = (TableColumn<Person, String> p) -> new EditingCell();
@@ -296,21 +309,21 @@ public class Controller {
                             t.getTablePosition().getRow())
                     ).setName(t.getNewValue());
                 });
-
+        //设置每个单元格可修改
         nameColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Person, String> t) -> {
                     ((Person) t.getTableView().getItems().get(
                             t.getTablePosition().getRow())
                     ).setName(t.getNewValue());
                 });
-
+        //设置每个单元格可修改
         phoneColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Person, String> t) -> {
                     ((Person) t.getTableView().getItems().get(
                             t.getTablePosition().getRow())
                     ).setPhone(t.getNewValue());
                 });
-
+        //设置每个单元格可修改
         emailColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Person, String> t) -> {
                     ((Person) t.getTableView().getItems().get(

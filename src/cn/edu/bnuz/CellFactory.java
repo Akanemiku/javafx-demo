@@ -8,7 +8,7 @@ import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 /**
- * 工厂类
+ * 工厂类，负责表格每一列的初始化对应
  */
 public class CellFactory {
 

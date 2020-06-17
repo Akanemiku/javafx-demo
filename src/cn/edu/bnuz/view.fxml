@@ -50,14 +50,11 @@
       </columns>
       <items>
          <FXCollections fx:factory="observableArrayList">
-<!--            <Person email="jacob.smith@example.com" name="Jacob" no="123" />-->
-<!--            <Person email="isabella.johnson@example.com" name="Isabella" no="123" />-->
-<!--            <Person email="ethan.williams@example.com" name="Ethan" no="123" />-->
-<!--            <Person email="emma.jones@example.com" name="Emma" no="123" />-->
-<!--            <Person email="michael.brown@example.com" name="Michael" no="123" />-->
          </FXCollections>
       </items>
    </TableView>
+
+<!--   以下为增删改查相关-->
    <HBox alignment="BOTTOM_RIGHT" spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
       <TextField fx:id="idAdd" prefWidth="90.0" promptText="id" HBox.hgrow="ALWAYS" />
       <TextField fx:id="nameAdd" prefWidth="90.0" promptText="姓名" HBox.hgrow="ALWAYS" />
